@@ -22,6 +22,6 @@ func main() {
 	server.POST("/videos", func(ctx *gin.Context) {
 		ctx.JSON(200, videoController.Save(ctx))
 	})
-//Server Listening
+
 	server.Run(":8000")
 }
