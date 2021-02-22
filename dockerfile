@@ -23,7 +23,7 @@ COPY . .
 ENV PORT 8000
 
 # Build the app
-RUN go build 
+RUN go build server.go
 
 # Run the app
 CMD ["./server"]
