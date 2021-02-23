@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: golangapi-service
+  labels:
+     name: golangapi-service
+     environment: production
+     app: golangapi-service
+spec:
+  containers:
+  - name: golangapi-service
+    image: golang-api-jenkins:18
+    imagePullPolicy: Always
+    env:
+    command: ["/bin/bash"]
+    args: ["-c", "./server"]
+    ports:
+    - containerPort: 8000
+      name: golangapi-httpport
+      protocol: TCP
