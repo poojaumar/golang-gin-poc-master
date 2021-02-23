@@ -20,7 +20,7 @@ RUN go mod download
 COPY . .
 
 # Set http port
-ENV PORT 8000
+ENV PORT 50000
 
 # Build the app
 RUN go build server.go
