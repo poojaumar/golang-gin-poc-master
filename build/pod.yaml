@@ -16,5 +16,5 @@ spec:
     args: ["-c", "./server"]
     ports:
     - containerPort: 8000
-      name: golangapi-httpport
+      name: golangapi-hport
       protocol: TCP
