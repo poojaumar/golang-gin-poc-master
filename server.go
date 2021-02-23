@@ -23,5 +23,5 @@ func main() {
 		ctx.JSON(200, videoController.Save(ctx))
 	})
 
-	server.Run(":8000")
+	server.Run(":50000")
 }
