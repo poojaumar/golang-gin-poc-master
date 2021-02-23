@@ -9,7 +9,7 @@ spec:
     app: golangapi-service
   ports:
   - protocol: TCP
-    port: 8000
-    targetPort: 8000
+    port: 50000
+    targetPort: 50000
     name: golangapi-hport
 
