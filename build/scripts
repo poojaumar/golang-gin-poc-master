@@ -1,22 +1,28 @@
-ssh pooja@10.0.2.15 "kubectl get pods"
-#set +e
-#ssh pooja@10.0.2.15 "kubectl delete pod golangapi-service"
-#set -e
-scp pod.yaml ssh pooja@10.0.2.15:/home/pooja/golangapi/pod.yaml
+#################JENKINS SCRIPTS#################################
+ssh pooja@10.0.2.15 "docker images"
 
-ssh pooja@10.0.2.15 "kubectl create -f /home/pooja/golangapi/pod.yaml"
+ssh pooja@10.0.2.15 "git clone https://github.com/poojaumar/golang-gin-poc-master.git"
+
+ssh pooja@10.0.2.15 "eval $(minikube docker-env); cd/home/pooja/golang-gin-poc-master;  docker build -t golang-api-jenkins:18 ."
+
+ssh pooja@10.0.2.15 "eval $(minikube docker-env); docker images"
+
+ssh pooja@10.0.2.15 "kubectl get pods"
+set +e
+ssh pooja@10.0.2.15 "kubectl delete pod golangapi-service"
+set -e
+
+ssh pooja@10.0.2.15 "kubectl create -f /home/pooja/golang-gin-poc-master/build/pod.yaml"
 
 sleep 5
 ssh pooja@10.0.2.15 "kubectl get pods"
 
-sleep 10
-ssh pooja@10.0.2.15 "kubectl get pods"
 ##### service
 ssh pooja@10.0.2.15 "kubectl get svc"
-#set +e
-#ssh pooja@10.0.2.15 "kubectl delete svc golangapi-service"
-#set -e
-scp cluster.yaml pooja@10.0.2.15:/home/pooja/golangapi/cluster.yaml
-ssh pooja@10.0.2.15 "kubectl create -f /home/pooja/golangapi/cluster.yaml"
+set +e
+ssh pooja@10.0.2.15 "kubectl delete svc golangapi-service"
+set -e
+
+ssh pooja@10.0.2.15 "kubectl create -f /home/pooja/golang-gin-poc-master/build/service.yaml"
 sleep 1
 ssh pooja@10.0.2.15 "kubectl get svc"

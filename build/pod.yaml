@@ -10,11 +10,9 @@ spec:
   containers:
   - name: golangapi-service
     image: golang-api-jenkins:18
-    imagePullPolicy: Always
+    imagePullPolicy: IfNotPresent
     env:
     command: ["/bin/bash"]
-    args: ["-c", "./server"]
+    args: ["-c", "sleep 10; ./server"]
     ports:
     - containerPort: 50000
-      name: golangapi-hport
-      protocol: TCP
