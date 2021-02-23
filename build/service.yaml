@@ -7,6 +7,6 @@ spec:
     app: golangapi-service
   type: NodePort
   ports:
-    port: 50000
+  - port: 50000
     targetPort: 50000
 
