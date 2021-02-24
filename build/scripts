@@ -1,7 +1,7 @@
 #################JENKINS SCRIPTS#################################
 ssh pooja@10.0.2.15 "docker images"
 
-ssh pooja@10.0.2.15 'eval $(minikube docker-env); docker images'
+ssh pooja@10.0.2.15 'eval $(minikube docker-env); docker images; docker rmi golang-api-jenkins:18'
 
 ssh pooja@10.0.2.15 "git clone https://github.com/poojaumar/golang-gin-poc-master.git"
 
@@ -28,3 +28,6 @@ set -e
 ssh pooja@10.0.2.15 "kubectl create -f /home/pooja/golang-gin-poc-master/build/service.yaml"
 sleep 1
 ssh pooja@10.0.2.15 "kubectl get svc"
+
+######################################Clean up##########################################
+ssh pooja@10.0.2.15 "rm -rf golang-gin-poc-master"
